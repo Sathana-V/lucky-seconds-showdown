@@ -86,8 +86,8 @@ showStatusOfAttempt(BuildContext context, WidgetRef ref, bool isError) async {
                   child: Text(
                     softWrap: true,
                     isError
-                        ? 'Ooops! you lost the match'
-                        : 'Congratualtions you won the match',
+                        ? "Hard luck! Keep trying, you're bound to hit the jackpot."
+                        : "Congratulations! You've earned a point. ",
                     textAlign: TextAlign.start,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                   ),

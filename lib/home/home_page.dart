@@ -13,7 +13,6 @@ class HomePage extends ConsumerWidget {
       bool isTimerSet = ref.read(homeController).isTimerSet;
       if (!isTimerSet) {
         ref.read(homeController).startTimer();
-        ref.read(homeController).getScoreFromDb();
       }
     });
     int successCount = ref.watch(homeController).successfulAttemptCount;
@@ -98,7 +97,7 @@ class HomePage extends ConsumerWidget {
                             Column(
                               children: [
                                 Text(
-                                  'Won $isPaused',
+                                  'Won',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,

@@ -25,13 +25,14 @@ class HomeProvider extends ChangeNotifier {
   void setBuildContext(BuildContext context, WidgetRef ref) {
     contextValue = context;
     refvalue = ref;
+    notifyListeners();
   }
 
   void checkLuck() {
     attemptMade();
     getCurrentSecond();
     getRandomNumber();
-    checkAttemptStatus(contextValue, refvalue);
+    checkAttemptStatus();
   }
 
   void startTimer() {
@@ -92,6 +93,7 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+// future implementation
   void getScoreFromDb() async {
     String targetName = refvalue.read(loginController).userName;
     await Hive.initFlutter();
@@ -110,8 +112,9 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
-  void updateDatabase(BuildContext context, WidgetRef ref) async {
-    String targetName = ref.read(loginController).userName;
+  // future implementation
+  void updateDatabase() async {
+    String targetName = refvalue.read(loginController).userName;
     await Hive.initFlutter();
     await Hive.openBox('scoreBoard');
     final notificationsDb = Hive.box('scoreBoard');
@@ -139,15 +142,15 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
-  void checkAttemptStatus(BuildContext context, WidgetRef ref) {
+  void checkAttemptStatus() {
     pauseTimer();
     if (currentSecond == randomNumber) {
       successfulAttemptCount = successfulAttemptCount + 1;
-      showStatusOfAttempt(context, ref, false);
+      showStatusOfAttempt(contextValue, refvalue, false);
     } else {
-      showStatusOfAttempt(context, ref, true);
+      showStatusOfAttempt(contextValue, refvalue, true);
     }
-    updateDatabase(context, ref);
+    updateDatabase();
   }
 
   void getCurrentSecond() {

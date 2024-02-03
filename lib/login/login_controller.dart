@@ -21,13 +21,13 @@ class LoginProvider extends ChangeNotifier {
       notifyListeners();
       showToast('Name must have atleast 5 characters');
     } else {
-      await storeToDatabase();
-
       ref.read(homeController).resetValues();
+
       Navigator.of(context).pushNamed(homeRoute);
     }
   }
 
+  // future implementation of storing score in
   storeToDatabase() async {
     await Hive.initFlutter();
     await Hive.openBox('scoreBoard');
