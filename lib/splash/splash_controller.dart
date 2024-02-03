@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:luckysecondsdown/home/home_controller.dart';
 
 import '../utils/constants.dart';
 

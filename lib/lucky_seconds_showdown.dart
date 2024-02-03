@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:luckysecondsdown/home/home_page.dart';
 import 'package:luckysecondsdown/login/login_page.dart';
 import 'package:luckysecondsdown/splash/splash_page.dart';
 import 'utils/constants.dart';
@@ -18,12 +19,11 @@ class LuckySeconds extends StatelessWidget {
       routes: {
         splashRoute: (context) => const SplashPage(),
         loginRoute: (context) => const LoginPage(),
+        homeRoute: (context) => const HomePage(),
       },
     );
   }
 }
-
-class HomePage {}
 
 ThemeData lightTheme(context) => ThemeData(
     useMaterial3: false,

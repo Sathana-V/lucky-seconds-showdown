@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:luckysecondsdown/home/home_controller.dart';
 import 'package:luckysecondsdown/utils/constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -24,6 +26,22 @@ class AppDetails {
   }
 }
 
+class LuckySecondsWidgets {
+  Widget luckyContainer(BuildContext context, Widget widget) {
+    return Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color.fromARGB(255, 0, 0, 0), Colors.black87],
+          ),
+        ),
+        child: widget);
+  }
+}
+
 /// Function to display a toast with customizable parameters.
 ///
 /// 1. [message]: The message to be displayed in the toast.
@@ -39,4 +57,75 @@ showToast(String message, [String type = 'error']) {
     textColor: Colors.white,
     fontSize: 16.0,
   );
+}
+
+showStatusOfAttempt(BuildContext context, WidgetRef ref, bool isError) async {
+  String filePath = isError
+      ? 'assets/background/failure.jpeg'
+      : 'assets/background/success.png';
+  return await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(24.0))),
+          insetPadding: const EdgeInsets.all(8.0),
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.80,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height / 200),
+                Image.asset(
+                  filePath,
+                  height: 100,
+                  width: 100,
+                ),
+                FittedBox(
+                  child: Text(
+                    softWrap: true,
+                    isError
+                        ? 'Ooops! you lost the match'
+                        : 'Congratualtions you won the match',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const SizedBox(width: 20),
+                    GestureDetector(
+                      onTap: () {
+                        ref.read(homeController).resumeTimer(context, ref);
+                        Navigator.of(context, rootNavigator: true).pop();
+                      },
+                      child: Container(
+                        width: 80,
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'OK',
+                            style: TextStyle(color: Colors.white, fontSize: 14),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      });
 }

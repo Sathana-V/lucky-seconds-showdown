@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luckysecondsdown/counter/counter.dart';
 import 'package:luckysecondsdown/utils/commonWidgets.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -6,8 +7,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 const appTitle = 'Lucky Seconds Showdown';
 
 const splashRoute = '/';
-const otpRoute = '/login';
-const loginRoute = '/scanOrLogin';
+const loginRoute = '/login';
 const homeRoute = '/home';
 
 // asset paths
@@ -20,3 +20,5 @@ const loginBg = 'assets/background/login-bg.png';
 //common widgets
 AppDetails appDetails = AppDetails();
 Widget appNameWidget = appDetails.appNameWidget();
+LuckySecondsWidgets luckySecondsWidgets = LuckySecondsWidgets();
+Counter counter = Counter();

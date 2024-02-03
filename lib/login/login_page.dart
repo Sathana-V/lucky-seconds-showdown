@@ -35,8 +35,10 @@ class LoginPage extends ConsumerWidget {
                       const Positioned(
                         top: 140,
                         left: 60,
-                        child: Text('Name :',
-                            style: TextStyle(color: Colors.white)),
+                        child: Text('NAME :',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)),
                       ),
                       Positioned(
                           top: 160,
@@ -81,7 +83,9 @@ class LoginPage extends ConsumerWidget {
                           left: 60,
                           child: GestureDetector(
                               onTap: () {
-                                ref.read(loginController).startGame();
+                                ref
+                                    .read(loginController)
+                                    .startGame(context, ref);
                               },
                               child: Image.asset(playButton)))
                     ]),

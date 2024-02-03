@@ -38,6 +38,8 @@ dependencies:
   flutter_riverpod: ^2.4.10
   google_fonts: ^6.1.0
   fluttertoast: ^8.2.4
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,7 @@ flutter:
     - assets/
     - assets/animations/ 
     - assets/background/
+    - assets/counter/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
