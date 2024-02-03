@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:luckysecondsdown/lucky_seconds_showdown.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+    (_) {
+      runApp(
+        const ProviderScope(
+          child: LuckySeconds(),
+        ),
+      );
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter sd  Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +44,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter sd  Demo Home Page'),
     );
   }
 }
