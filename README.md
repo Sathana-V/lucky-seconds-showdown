@@ -7,6 +7,7 @@ This repository contains the source code for the app exercise as per the provide
 ## Developer Details
 - **Name:** [Sathana Venkatesan]
 - **Email:** [sathanavenkatesan02@gmail.com]
+- **Qualtification:** [BE. CSE]
 - **LinkedIn:** [https://www.linkedin.com/in/sathana-venkatesan-601a16277/]
 
 ## App Functionality
