@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.4.10
   google_fonts: ^6.1.0
+  fluttertoast: ^8.2.4
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +62,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - assets/animations/
+    - assets/animations/ 
+    - assets/background/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
